@@ -31,6 +31,8 @@ python useobject.py
   2. haarcascade_mcs_nose.xml
   3. haarcascade_eye_tree_eyeglasses.xml
 
+**To import file and run this code all the required modules are in requirement.txt**
+    pip install -r requirements.txt
     
 
 
