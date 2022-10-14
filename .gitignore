@@ -1,0 +1,7 @@
+venv/
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+pictures/
+filter.py
