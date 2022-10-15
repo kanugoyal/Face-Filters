@@ -1,0 +1,28 @@
+Haar Cascade Classifier
+
+   Object Detection using Haar feature-based cascade classifiers is an effective object detection method proposed by Paul Viola and Michael Jones in their paper, "Rapid Object Detection using a Boosted Cascade of Simple Features" in 2001. It is an Object Detection Algorithm used to identify faces in an image or a real time video. The algorithm is given a lot of positive images consisting of faces, and a lot of negative images not consisting of any face to train on them. The model created from this training is available at the OpenCV GitHub repository https://github.com/opencv/opencv/tree/master/data/haarcascades.
+
+   The repository has the models stored in XML files, and can be read with the OpenCV methods. These include models for face detection, eye detection, upper body and lower body detection, license plate detection etc. 
+
+    A Haar Cascade Classifier returns a multidimensional numpy array. The number of elements in that array is equal to the number of faces present in the image. Each element of this array contains 4 integers. The first two indicating the top-left corner followed by the width and height of the ROI.
+
+- Pros
+1. Works almost real-time on CPU
+2. Simple Architecture
+3. Detects faces at different scales
+
+- Cons
+1. The major drawback of this method is that it gives a lot of False predictions.
+2. Doesn’t work on non-frontal images.
+3. Doesn’t work under occlusion
+
+
+Haar Cascade Detection is one of the oldest yet powerful face detection algorithms invented. It has been there since long, long before Deep Learning became famous. Haar Features were not only used to detect faces, but also for eyes, lips, license number plates etc. The models are stored on GitHub, and we can access them with OpenCV methods.
+
+
+
+Dlib Library
+
+ Python offers a library called dlib, that detects facial landmarks.To find any facial landmarks, one first has to extract the face from the image and then use that extracted ROI (region of interest) of the face to get the landmarks.
+
+ The dlib is used to estimate the location of 68 coordinates (x, y) that map the facial points on a person’s face. Dlib provides a face detecting function called get_frontal_face_detector(). This function returns an array of arrays of rectangle objects. A rectangle object represents a rectangular area of an image. Each rectangle object holds four values, meaning it also returns the coordinates of ROI that contains the face but in a different format.
