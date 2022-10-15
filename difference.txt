@@ -26,3 +26,6 @@ Dlib Library
  Python offers a library called dlib, that detects facial landmarks.To find any facial landmarks, one first has to extract the face from the image and then use that extracted ROI (region of interest) of the face to get the landmarks.
 
  The dlib is used to estimate the location of 68 coordinates (x, y) that map the facial points on a person’s face. Dlib provides a face detecting function called get_frontal_face_detector(). This function returns an array of arrays of rectangle objects. A rectangle object represents a rectangular area of an image. Each rectangle object holds four values, meaning it also returns the coordinates of ROI that contains the face but in a different format.
+
+
+ 
