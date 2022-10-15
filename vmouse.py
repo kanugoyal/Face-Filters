@@ -1,4 +1,3 @@
-from pkgutil import ImpImporter
 import cv2
 import mediapipe as mp
 import pyautogui
