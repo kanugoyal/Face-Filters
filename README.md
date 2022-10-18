@@ -11,7 +11,7 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
      or 
      * pip install -r requirements.txt
 
-     
+
   1. **Dlib**
      - Python offers a library called dlib, to find any facial landmarks. To detect a face, one first has to extract the face from the image and then use that extracted ROI (region of interest) of the face to get the landmarks. Dlib also provides a face detecting function called get_frontal_face_detector(). This function returns an array of arrays of rectangle objects. A rectangle object represents a rectangular area of an image. The dlib library provides a function named shape_predictor() that takes two parameters, the first being the grayscaled version of the image and the second is a dlib rectangle object that holds the coordinates of the face area. 
 
@@ -42,7 +42,7 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
 
         **Filters**
         1. Swag Glasses
-            python snap_filters/swagfilter.py
+            python snap_filters/sunglasseshaar.py
             image used : images/swag.png
 
             ### Result
@@ -50,17 +50,20 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
              ![Sunglasseshaar](images/sunglasseshaar.jpg)
         
         2. Pig Nose
-            python snap_filters/nosefilter.py
+            python snap_filters/pig_nose_filter_haar.py
             image used: images/pig_nose.png
 
             ### Result
+
+             ![Pignosehaar](images/pignosehaar.jpg)
             
-        3. Fun Filter
-            python snap_filters/funfilter.py
+        3. Nose Filter
+            python snap_filters/nose_filter_haar.py
             image used: images/nose.png
 
             ### Result
-
+             ![Nosefilter](images/nosefilter.jpg)
+             
         4. Capture Image With Smile
             python snap_filters/smile_selfie_cap.py
             Images stored in Selfie_Cap
