@@ -11,7 +11,7 @@ while True:
     for (x, y, w , h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255,0,0), 2)
         overlay_resize = cv2.resize(overlay,(w,h))
-        frame = cvzone.overlayPNG(frame, overlay_resize,[x,y])
+        frame = cvzone.overlayPNG(frame, overlay_resize,[x,y-20])
 
     cv2.imshow('Snap filter', frame)
     if cv2.waitKey(10) == ord('q'):
