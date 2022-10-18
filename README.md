@@ -3,6 +3,15 @@
 This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Face Landmark Detection and the Mediapipe fetures to detect mainly faces positions ,eye position, nose positions, face and hand landmark detection. It uses this information to overlay different accessories to the faces.
 
 ## How does it work?
+
+ ### Libraries Required:
+     - opencv-python
+     - cmake
+     - dlib
+     or 
+     * pip install -r requirements.txt
+
+     
   1. **Dlib**
      - Python offers a library called dlib, to find any facial landmarks. To detect a face, one first has to extract the face from the image and then use that extracted ROI (region of interest) of the face to get the landmarks. Dlib also provides a face detecting function called get_frontal_face_detector(). This function returns an array of arrays of rectangle objects. A rectangle object represents a rectangular area of an image. The dlib library provides a function named shape_predictor() that takes two parameters, the first being the grayscaled version of the image and the second is a dlib rectangle object that holds the coordinates of the face area. 
 
@@ -38,7 +47,7 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
 
             ### Result
 
-             ![Sunglasses_haar](images/sunglasses_haar.png)
+             ![Sunglasseshaar](images/sunglasseshaar.jpg)
         
         2. Pig Nose
             python snap_filters/nosefilter.py
