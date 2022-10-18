@@ -47,7 +47,7 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
 
             ### Result
 
-             ![Sunglasseshaar](images/sunglasseshaar.jpg)
+            ![Sunglasseshaar](images/sunglasseshaar.jpg)
         
         2. Pig Nose
             python snap_filters/pig_nose_filter_haar.py
@@ -55,15 +55,15 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
 
             ### Result
 
-             ![Pignosehaar](images/pignosehaar.jpg)
+            ![Pignosehaar](images/pignosehaar.jpg)
             
         3. Nose Filter
             python snap_filters/nose_filter_haar.py
             image used: images/nose.png
 
             ### Result
-             ![Nosefilter](images/nosefilter.jpg)
-             
+            ![Nosefilter](images/nosefilter.jpg)
+
         4. Capture Image With Smile
             python snap_filters/smile_selfie_cap.py
             Images stored in Selfie_Cap
