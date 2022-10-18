@@ -12,7 +12,7 @@ while True:
     for (x, y, w , h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255,0,0), 2)
         
-        overlay_resize = cv2.resize(overlay,(int(w/1.5),int(h/1.5)))
+        overlay_resize = cv2.resize(overlay,(int(w/1.5),int(h/2)))
         frame = cvzone.overlayPNG(frame, overlay_resize,[x+30,y+50])
 
     cv2.imshow('Snap filter', frame)
