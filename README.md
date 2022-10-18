@@ -29,7 +29,7 @@ This project is about **Face Detection** uses Haar Cascade Classifiers, Dlib Fac
         ![Myimg_dlib](images/myimg_dlib.jpg)
 
     
-    2. **HaarCascade Classifier**
+  2. **HaarCascade Classifier**
      - The most famous process of face detection is using a haar cascade classifier which, returns a multidimensional numpy array. The number of elements in that array is equal to the number of faces present in the image. Each element of this array contains 4 integers. The first two indicating the top-left corner followed by the width and height of the ROI. The haar cascade classifier takes two more parameters, scaleFactor and minNeighbors. The scaleFactor parameter specifies how much the image size is reduced at each image scale and the minNeighbors parameter specifies how many neighbors each candidate rectangle should have to retain it. Basically, with these two parameters, you can control how strictly or loosely you want to detect faces in the image. The haar cascade extracts more area than the dlib function.
        
         **HaarCascade applied**
