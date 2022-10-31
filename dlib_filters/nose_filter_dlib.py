@@ -3,7 +3,7 @@ import dlib
 import numpy as np
 from math import hypot
 cap = cv2.VideoCapture(0)
-nose_img = cv2.imread('images/nose.png')
+nose_img = cv2.imread('images/rednose.png')
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 while True:
