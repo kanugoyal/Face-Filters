@@ -22,11 +22,18 @@ video_capture = cv2.VideoCapture(0)
 anterior = 0
 mst = cv2.imread('images/moustache.png')
 hat = cv2.imread('images/cowboy_hat.png')
+cat_e = cv2.imread('images/cat_ear.jpg')
+cat_n = cv2.imread('images/cat_n.jpg')
+dog_n = cv2.imread('images/dog_n.jpg')
 dog = cv2.imread('images/dog_filter.png')
+glasses = cv2.imread('images/glasses.jpg')
+hearts = cv2.imread('images/hearts.jpg')
 swag = cv2.imread('images/swag.png',  cv2.IMREAD_UNCHANGED)
+spiderman = cv2.imread('images/spiderman.jpg')
+ironman = cv2.imread('images/ironman.jpg')
 
 
-def put_moustache(mst,fc,x,y,w,h):
+def put_moustache(mst,fil,x,y,w,h):
     
     face_width = w
     face_height = h
@@ -42,10 +49,10 @@ def put_moustache(mst,fc,x,y,w,h):
         for j in range(int(0.29166666666*face_width),int(0.29166666666*face_width)+mst_width):
             for k in range(3):
                 if mst[i-int(0.62857142857*face_height)][j-int(0.29166666666*face_width)][k] <235:
-                    fc[y+i][x+j][k] = mst[i-int(0.62857142857*face_height)][j-int(0.29166666666*face_width)][k]
-    return fc
+                    fil[y+i][x+j][k] = mst[i-int(0.62857142857*face_height)][j-int(0.29166666666*face_width)][k]
+    return fil
 
-def put_hat(hat,fc,x,y,w,h):
+def put_hat(hat,fil,x,y,w,h):
     
     face_width = w
     face_height = h
@@ -59,10 +66,60 @@ def put_hat(hat,fc,x,y,w,h):
         for j in range(hat_width):
             for k in range(3):
                 if hat[i][j][k]<235:
-                    fc[y+i-int(0.25*face_height)][x+j][k] = hat[i][j][k]
-    return fc
+                    fil[y+i-int(0.25*face_height)][x+j][k] = hat[i][j][k]
+    return fil
 
-def put_dog_filter(dog,fc,x,y,w,h):
+def put_cat_ear(cat_e, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    cat_e_width = face_width + 1
+    cat_e_height = int(0.35 * face_height) + 1
+
+    cat_e = cv2.resize(cat_e, (cat_e_width, cat_e_height))
+
+    for i in range(cat_e_height):
+        for j in range(cat_e_width):
+            for k in range(3):
+                if cat_e[i][j][k] < 235:
+                    fil[y + i - int(0.25 * face_height)][x + j][k] = cat_e[i][j][k]
+    return fil
+
+def put_cat_nose(cat_n, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    cat_n_width = int(face_width * 0.4166666) + 1
+    cat_n_height = int(face_height * 0.142857) + 1
+
+    cat_n = cv2.resize(cat_n, (cat_n_width, cat_n_height))
+
+    for i in range(int(0.62857142857 * face_height), int(0.62857142857 * face_height) + cat_n_height):
+        for j in range(int(0.29166666666 * face_width), int(0.29166666666 * face_width) + cat_n_width):
+            for k in range(3):
+                if cat_n[i - int(0.62857142857 * face_height)][j - int(0.29166666666 * face_width)][k] < 235:
+                    fil[y + i][x + j][k] = \
+                        cat_n[i - int(0.62857142857 * face_height)][j - int(0.29166666666 * face_width)][k]
+    return fil
+
+def put_dog_nose(dog_n, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    dog_n_width = int(face_width * 0.4166666) + 1
+    dog_n_height = int(face_height * 0.3) + 1
+
+    dog_n = cv2.resize(dog_n, (dog_n_width, dog_n_height))
+
+    for i in range(int(0.62857142857 * face_height), int(0.62857142857 * face_height) + dog_n_height):
+        for j in range(int(0.29166666666 * face_width), int(0.29166666666 * face_width) + dog_n_width):
+            for k in range(3):
+                if dog_n[i - int(0.62857142857 * face_height)][j - int(0.29166666666 * face_width)][k] < 235:
+                    fil[y + i][x + j][k] = \
+                        dog_n[i - int(0.62857142857 * face_height)][j - int(0.29166666666 * face_width)][k]
+    return fil
+
+def put_dog_filter(dog,fil,x,y,w,h):
     face_width = w
     face_height = h
     
@@ -71,21 +128,69 @@ def put_dog_filter(dog,fc,x,y,w,h):
         for j in range(int(face_width*1.5)):
             for k in range(3):
                 if dog[i][j][k]<235:
-                    fc[y+i-int(0.375*h)-1][x+j-int(0.25*w)][k] = dog[i][j][k]
-    return fc
+                    fil[y+i-int(0.375*h)-1][x+j-int(0.25*w)][k] = dog[i][j][k]
+    return fil
     
     
-def put_swag_glasses(swag,x,y,w,h):
+def put_swag_glasses(swag,fil,x,y,w,h):
     face_width = w
     face_height = h
     cv2.rectangle(frame, (x, y), (x+w, y+h), (255,0,0), 2)
     overlay_resize = cv2.resize(swag,(face_width,face_height))
-    fc = cvzone.overlayPNG(frame, overlay_resize,[x,y-20])
-    return fc
+    fil = cvzone.overlayPNG(frame, overlay_resize,[x,y-20])
+    return fil
 
-    
+def put_glasses_filter(glasses, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    glasses = cv2.resize(glasses, (int(face_width * 1), int(face_height * 0.4)))
+    for i in range(int(face_height * 0.4)):
+        for j in range(int(face_width * 1)):
+            for k in range(3):
+                if glasses[i][j][k] < 235:
+                    fil[y + i + int(0.25* h) - 1][x + j + int(0.005 * w)][k] = glasses[i][j][k]
+    return fil
+
+def put_hearts_filter(hearts, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    hearts = cv2.resize(hearts, (int(face_width * 1), int(face_height * 0.4)))
+    for i in range(int(face_height * 0.4)):
+        for j in range(int(face_width * 1)):
+            for k in range(3):
+                if hearts[i][j][k] < 235:
+                    fil[y + i + int(0.25* h) - 1][x + j + int(0.005 * w)][k] = hearts[i][j][k]
+    return fil
+
+
+def put_spiderman_filter(spiderman, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    spiderman = cv2.resize(spiderman, (int(face_width * 0.9), int(face_height * 1.4)))
+    for i in range(int(face_height * 1.4)):
+        for j in range(int(face_width * 0.9)):
+            for k in range(3):
+                if spiderman[i][j][k] < 235:
+                    fil[y + i - int(0.3 * h) - 1][x + j + int(0.05 * w)][k] = spiderman[i][j][k]
+    return fil
+
+def put_ironman_filter(ironman, fil, x, y, w, h):
+    face_width = w
+    face_height = h
+
+    ironman = cv2.resize(ironman, (int(face_width * 0.9), int(face_height * 1.4)))
+    for i in range(int(face_height * 1.4)):
+        for j in range(int(face_width * 0.9)):
+            for k in range(3):
+                if ironman[i][j][k] < 235:
+                    fil[y + i - int(0.3 * h) - 1][x + j + int(0.05 * w)][k] = ironman[i][j][k]
+    return fil
+  
 ch = 0
-print ("Select Filter: 1.) Hat 2.) Moustache 3.) Hat and Moustache 4.) Dog Filter 5.) Swag Filter 6.) Swag Filter and Hat 7.) Swag Filter and Moustache ")
+print ("Select Filter: 1.) Hat 2.) Moustache 3.) Hat and Moustache 4.) Dog Filter 5.) Swag Filter 6.) Swag Filter and Hat 7.) Swag Filter and Moustache 8.) Cat Ear 9.) Cat Filter 10.) Dog Nose 12.) Spiderman 11.) Ironman")
 ch = int(input())
     
     
@@ -126,9 +231,20 @@ while True:
         elif ch==6:
             frame = put_swag_glasses(swag,x,y,w,h)
             frame = put_hat(hat,frame,x,y,w,h)
-        else :
+        elif ch==7 :
             frame = put_swag_glasses(swag,x,y,w,h)
             frame = put_moustache(mst,frame,x,y,w,h)
+        elif ch==8 :
+            frame = put_cat_ear(cat_e, frame, x, y, w, h)
+        elif ch==9 :
+            frame = put_cat_ear(cat_e, frame, x, y, w, h)
+            frame = put_cat_nose(cat_n, frame, x, y, w, h)
+        elif ch==10 :
+            frame = put_dog_nose(dog_n, frame, x, y, w, h)
+        elif ch==11 :
+            frame = put_ironman_filter(ironman, frame, x, y, w, h)
+        else :
+            frame = put_spiderman_filter(spiderman, frame, x, y, w, h)
             
             
             
