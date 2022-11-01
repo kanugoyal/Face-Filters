@@ -4,7 +4,7 @@ import cvzone
 cap = cv2.VideoCapture(0)
 cascade = cv2.CascadeClassifier('Haar_Classifier/haarcascade_frontalface_default.xml')
 overlay = cv2.imread('images/nose.png', cv2.IMREAD_UNCHANGED)
-print(overlay)
+#print(overlay)
 while True:
     _, frame = cap.read()
     gray_scale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
