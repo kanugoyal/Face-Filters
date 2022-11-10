@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            th {
+                background-color:rgb(0, 128, 128);
+                Color:white;
+            }
+            th, td {
+                width:150px;
+                text-align:center;
+                border:1px solid rgb(14, 13, 13);
+                padding:5px
+              
+            }
+            .geeks {
+                border-right:hidden;
+            }
+            .gfg {
+                border-collapse:separate;
+                border-spacing:0 15px;
+            }
+            h1 {
+                color:rgb(2, 39, 65);
+            }
+            #container {
+                margin: 0px auto;
+                width: 500px;
+                height: 375px;
+                border: 10px #333 solid;
+            }
+            #imageElement {
+                width: 500px;
+                height: 375px;
+                background-color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <img src = "{{url_for('video_feed')}}" id = 'imageElement'>
+        </div>
+
+        
+        <div style = "position:relative; left:200px; top:20px;">
+        <form action = "{{url_for('video_feed')}}" method = "POST"  >
+        <table>
+        <tr>
+            <th><button name = 'img' type = 'submit' value = "Cowboy Hat">Cowboy Hat</button></th>
+            <th><button name = 'img' type = 'submit' value = "3D Glasses">3D Glasses</button></th>
+            <th><button name = 'img' type = 'submit' value = "Eyes">Eyes</button></th>
+            <th><button name = 'img' type = 'submit' value = "Glasses">Glasses</button></th>
+            <th><button name = 'img' type = 'submit' value = "Spiderman">Spiderman</button></th>
+            <th><button name = 'img' type = 'submit' value = "Ironman">Ironman</button></th>
+        </tr>
+        <tr>
+            <td><img src = "{{url_for('static', filename = 'cowboy_hat.png') }}" style="width:100px;height:100px;" alt="Cowboy Hat"></td>
+            <td><img src = "{{url_for('static', filename = '3dglasses.jpg')}}" style="width:100px;height:100px;" alt="3dglasses"></td>
+            <td><img src = "{{url_for('static', filename = 'eyes.jpg')}}" style="width:100px;height:100px;" alt="Eyes"></td>
+            <td><img src = "{{url_for('static', filename = 'glasses.jpg')}}" style="width:100px;height:100px;" alt="Glasses"></td>
+            <td><img src = "{{url_for('static', filename = 'spiderman.jpg')}}" style="width:100px;height:100px;" alt="Spiderman"></td>
+            <td><img src = "{{url_for('static', filename = 'ironman.jpg')}}" style="width:100px;height:100px;" alt="Ironman"></td>
+        </tr>
+    </table>
+    </form>
+    </div>
+    </body>
+</html>
