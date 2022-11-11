@@ -32,7 +32,7 @@ def create_app():
     def video_feed():
         val = 0
         if request.method == 'POST':
-            if request.form['img'] == 'Cowboy Hat':
+            if request.form['img'] == 'Swag Glasses':
                 val = 1
             if request.form['img'] == '3D Glasses':
                 val = 2
