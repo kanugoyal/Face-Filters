@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from .filter_choice import filter_prep
+from filter_choice import filter_prep
 
 
 def face_filter(img, val):
