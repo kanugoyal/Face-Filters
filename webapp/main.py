@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request
 from flask.wrappers import Request, Response
 import cv2
-from .face_filter import face_filter
+from face_filter import face_filter
 
 camera = cv2.VideoCapture(0)
 
 
-def create_app():
 
-    def gen_frames(val):  # generate frame by frame from camera
+
+def gen_frames(val):  # generate frame by frame from camera
         while True:
             # Capture frame-by-frame
             success, frame = camera.read()
@@ -22,14 +22,14 @@ def create_app():
                 yield (b'--frame\r\n'
                     b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-    app=Flask(__name__)
-    @app.route('/')
-    def home():
+app=Flask(__name__)
+@app.route('/')
+def home():
         
         return render_template("index.html")
 
-    @app.route('/video_feed', methods = ['POST', 'GET'])
-    def video_feed():
+@app.route('/video_feed', methods = ['POST', 'GET'])
+def video_feed():
         val = 0
         if request.method == 'POST':
             if request.form['img'] == 'Swag Glasses':
@@ -49,4 +49,5 @@ def create_app():
         return Response(gen_frames(val),mimetype='multipart/x-mixed-replace; boundary=frame')
        
 
-    return app
+if __name__ == '__main__':
+    app.run(debug = True)    
